@@ -2,13 +2,13 @@
 just a repository
 make some differents
 second change
-//how to submit your project
+//how to submit your local project to github
 1.use idea create local repository
 2.use Git Bash in windows
 cd c:/your/local/repository/directory
 git remote add origin https://github.com/yanshaochen/hellow-world.git
 git pull --rebase origin master
-git push -u origin master
+git push -u origin master   //第一次提交用-u
 3.return to idea add,commit,push 
 
 下载demo后，先删除远程仓库关联：
@@ -87,3 +87,25 @@ git reset --hard xxx：版本穿梭可以使用git log 查看提交历史（HEAD
 万一忘记了之后的码怎么办？
 git reflog  //查看历史版本
 
+################第三节课#################
+git的三个区：
+工作区：add之前，仓库物理目录下的文件（.git不是工作区）
+历史区：commit指向的
+暂存区：add之后文件进入暂存区，暂存区的文件未被修改才能commit，否则不是clean,不能commit
+
+为提交到暂存区时（没add）回退：
+git checkout -- <file>
+
+提交到暂存区了，要回退：
+1.vim license   //修改
+2.add license   //提交至暂存区
+3.git reset HEAD <file>   //把add的内容从暂存区清除
+4.git checkout -- <file>  //工作区回退
+
+git删除文件：
+git checkout -- file    //手误删除，回退
+git rm file   //真正删除
+git commit -m 'shanchu'  //提交删除
+
+最后，从github上clone代码到本地仓库
+git clone https://github.com/yanshaochen/hellow-world.git
