@@ -18,7 +18,8 @@ git remote -v
 git remote rm origin
 修改外层项目名
 修改内层module名和目录名
-修改外层pom.xml的modules节点
+修改内层pem.xml的<artifactId>和<name>
+修改外层pom.xml的<modules>
 modules中移除原先的Artifacts,添加需要的artifacts->web application exploded
 配置tomcat
 运行！
