@@ -109,3 +109,54 @@ git commit -m 'shanchu'  //提交删除
 
 最后，从github上clone代码到本地仓库
 git clone https://github.com/yanshaochen/hellow-world.git
+
+--------------第二天---------------
+##############第一节课##############
+查看当前所有分支：
+git branch
+*master   //*代表当前分支
+git branch 分支名称  //创建分支
+创建dev分支并切换：
+git checkout -b dev
+-b代表切换到分支
+git checkout master   //切换到master，然后可以合并
+git merge dev   把dev分支合并到master，方式时Fast-forward，直接把master和分支同步。企业不用。大家写的代码有冲突（比如两个人同时改了某方法）
+git branch -d <name> 删除分支
+
+conflict场景:
+一个文件master和feature1都修改并提交了相同文件（比如abc.txt）。就会产生冲突
+在master上 merge
+git merge feature1
+这样就产生了冲突
+$ cat abc.txt
+xfdaskldfjas
+fdafafaa
+暂存区
+branch test
+<<<<<<< HEAD
+merge conflict
+=======
+AND simple
+>>>>>>> featrue1
+
+协商修改abc.txt,把不一致的地方删除，写一个最终的:
+xfdaskldfjas
+fdafafaa
+暂存区
+branch test
+add simple
+然后add,commit
+删除分支
+git log --graph --pretty=oneline --abbrev-commit
+
+##############第二节课##############
+tag标签操作，标签就是版本快照：
+git tag <name>新建一个标签，默认是HEAD，也可以指定一个commit id
+git tag -a <name> -m 'xxxx'指定标签信息
+git tag 查看所有标签
+git tag -d <tagname>    删除本地标签
+git push origin v1.0    把本地标签发送到远程
+  
+如果tag标签已经发送到远程，如何删除远程标签
+1）删除本地tag
+2）git push origin :refs/tags/v0.9
